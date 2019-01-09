@@ -1,0 +1,53 @@
+{
+  "name": "task-app",
+  "version": "0.1.0",
+  "private": true,
+  "dependencies": {
+    "@atlaskit/button": "^10.1.1",
+    "@atlaskit/checkbox": "^5.0.10",
+    "@atlaskit/css-reset": "^3.0.5",
+    "@atlaskit/datetime-picker": "^6.3.23",
+    "@atlaskit/field-base": "^11.0.13",
+    "@atlaskit/field-text": "^7.0.19",
+    "@atlaskit/field-text-area": "^4.0.15",
+    "@atlaskit/icon": "^15.0.3",
+    "@atlaskit/lozenge": "^6.2.4",
+    "@atlaskit/modal-dialog": "^7.1.2",
+    "@atlaskit/select": "^6.1.15",
+    "@atlaskit/spinner": "^9.0.13",
+    "@atlaskit/toggle": "^5.0.14",
+    "@emotion/core": "^10.0.5",
+    "axios": "^0.18.0",
+    "date-fns": "^1.30.1",
+    "react": "^16.7.0",
+    "react-dom": "^16.7.0",
+    "react-redux": "^5.0.7",
+    "react-scripts": "^2.1.2",
+    "redux": "^4.0.1",
+    "redux-thunk": "^2.3.0",
+    "styled-components": "^3.4.10"
+  },
+  "scripts": {
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test",
+    "eject": "react-scripts eject"
+  },
+  "eslintConfig": {
+    "extends": "react-app"
+  },
+  "browserslist": [
+    ">0.2%",
+    "not dead",
+    "not ie <= 11",
+    "not op_mini all"
+  ],
+  "devDependencies": {
+    "ajv": "^6.6.2",
+    "check-prop-types": "^1.1.2",
+    "enzyme": "^3.8.0",
+    "enzyme-adapter-react-16": "^1.7.1",
+    "jest-enzyme": "^7.0.1",
+    "moxios": "^0.4.0"
+  }
+}

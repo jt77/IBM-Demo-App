@@ -1,0 +1,19 @@
+FROM node:latest
+
+WORKDIR '/app'
+
+COPY ./package.json ./
+
+RUN npm install
+
+# Copying edited 3rd party modules to work around compilation errors
+# related to unneeded emotion css library
+COPY emotion_mods/esm/CountrySelect.js ./node_modules/@atlaskit/select/dist/esm/CountrySelect.js
+COPY emotion_mods/cjs/CountrySelect.js ./node_modules/@atlaskit/select/dist/cjs/CountrySelect.js
+COPY emotion_mods/esm/components.js ./node_modules/@atlaskit/select/dist/esm/PopupSelect/components.js
+COPY emotion_mods/cjs/components.js ./node_modules/@atlaskit/select/dist/cjs/PopupSelect/components.js
+COPY emotion_mods/esm/input-options.js ./node_modules/@atlaskit/select/dist/esm/components/input-options.js
+COPY emotion_mods/cjs/input-options.js ./node_modules/@atlaskit/select/dist/cjs/components/input-options.js
+COPY . .
+
+CMD ["npm", "run", "start"]

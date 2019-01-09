@@ -1,0 +1,100 @@
+.App {
+    margin: 50px 10% 0 10%
+}
+
+.App-header {
+    font-size: 3em;
+    margin-bottom: 30px;
+}
+
+.filter_container {
+    position: relative;
+}
+
+.filter_btn_newtask {
+    position: absolute;
+    top: 0;
+    right: 0;
+}
+
+.taskBar {
+    margin: 5px 0 0 0;
+    padding: 10px 20px;
+    background-color: rgba(9,30,66,0.04);
+
+    display: flex;
+    -webkit-flex-direction: row;
+    flex-direction: row;
+    -webkit-justify-content: space-between;
+    justify-content: space-between;
+    -webkit-align-items: center;
+    align-items: center;
+}
+
+.taskBar > * {
+    display: inline-block;
+}
+
+.taskBar:hover {
+    background-color: rgba(9,30,66,0.1);
+    cursor: pointer;
+}
+
+.taskBar_status .icon, .taskBar_status .label {
+    display: inline-block;
+    vertical-align: middle;
+    margin-top: 0;
+    font-size: 1em;
+}
+
+.taskBar_status .icon {
+    margin-right: 5px;
+}
+
+.urgent_icon {
+    color: rgb(222, 53, 11);
+}
+
+.warning_icon {
+    color: rgb(255, 171, 0);
+}
+
+.info_icon {
+    color: rgb(101, 84, 192);
+}
+
+.ok_icon {
+    color: rgb(54, 179, 126);
+}
+
+.taskform_container {
+    padding: 20px 20px 20px 20px;
+}
+
+.taskform_fields_container {
+    width: 50%;
+    min-width: 320px
+}
+
+.taskform_buttons {
+    margin-top: 25px;
+
+    display: flex;
+    -webkit-flex-direction: row;
+    flex-direction: row;
+    -webkit-justify-content: space-between;
+    justify-content: space-between;
+    -webkit-align-items: center;
+    align-items: center;
+}
+
+.taskform_completetoggle {
+    position: absolute;
+    top: 0;
+    right: 0;
+    padding: 20px 40px 0 0;
+}
+
+.taskform_completetoggle label {
+    float: right
+}
