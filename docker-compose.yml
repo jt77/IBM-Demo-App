@@ -1,0 +1,48 @@
+version: '3.6'
+
+services:
+
+  # backend api container
+  api:
+    build:
+      dockerfile: Dockerfile.dev
+      # the 'context' entry sets the root directory for this 'build' portion
+      # everything inside of this 'build' entry is relative to 'context'
+      context: ./api
+    volumes:
+      # mapping the root of the container to the 'api' local directory
+      # so that during development local changes are passed through to the container
+      - ./app:/app
+    ports:
+      - 5000:5000
+      # environment variables for the flask api app
+    environment:
+      - FLASK_ENV=development
+      - LOCAL_HOST_IP=0.0.0.0
+      - SECRET_KEY=my_secret
+
+  # frontend client container
+  client:
+    build:
+      dockerfile: Dockerfile.dev
+      context: ./client
+    volumes:
+      - /app/node_modules
+      - ./client:/app
+    ports:
+      - 3000:3000
+      # environment variables for the node react client
+    environment:
+      - NODE_ENV=development
+      - API_ENDPOINT_TASK=http://localhost:5000/task
+      - API_ENDPOINT_TASKS=http://localhost:5000/tasks
+
+  # frontend client tests
+  tests:
+      build:
+        dockerfile: Dockerfile.dev
+        context: ./client
+      volumes:
+        - /app/node_modules
+        - ./client:/app
+      command: ["npm", "run", "test"]
