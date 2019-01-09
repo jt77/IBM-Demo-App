@@ -91,7 +91,7 @@ class TaskForm extends React.Component {
 
     render() {
         return(
-            <div className='taskform_container' data-test="component-taskform">
+            <form className='taskform_container' data-test="component-taskform">
                 <h3 className="taskform_header">{this.props.header}</h3>
                 <div className='taskform_fields_container'>
                     <FieldText
@@ -140,7 +140,7 @@ class TaskForm extends React.Component {
                             isDefaultChecked={this.state.isCompleteToggleChecked}
                             onChange={() => this.doCompleteToggle()} />
                 </div>
-            </div>
+            </form>
         )
     }
 }

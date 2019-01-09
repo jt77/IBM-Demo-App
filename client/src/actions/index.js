@@ -7,10 +7,10 @@ import {actionTypes} from "./actionTypes";
 
 // const apiUrl = 'http://localhost:5000/task'
 /**
- *  We capture the api end point urls passed in from envinment variables
+ *  We capture the api end point urls passed in from environment variables
  */
-export const apiUrl = process.env.API_ENDPOINT_TASK || 'http://localhost:5000/task'
-export const apiUrlGetAll = process.env.API_ENDPOINT_TASKS || 'http://localhost:5000/tasks'
+export const apiUrl = process.env.API_ENDPOINT_TASK || 'http://192.168.99.100:5000/task'
+export const apiUrlGetAll = process.env.API_ENDPOINT_TASKS || 'http://192.168.99.100:5000/tasks'
 
 
 /**

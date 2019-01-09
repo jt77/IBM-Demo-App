@@ -1,9 +1,17 @@
 from flask_restful import Resource, reqparse
 from models.task import TaskModel
+from datetime import datetime
+
+
+# these classes specify the the logic for each CRUD operation
+# and establish the validation requirements for the request body
+
 
 class Task(Resource):
 
-    # specify the request arguments that we will allow through
+    # specify the request arguments that we will allow through,
+    # set all fields are required, specify required data types and formats
+    # and set a validation error response
     parser = reqparse.RequestParser()
     parser.add_argument(
         'name',
@@ -19,9 +27,9 @@ class Task(Resource):
     )
     parser.add_argument(
         'duedate',
-        type=str,
+        type=lambda x: datetime.strptime(x,'%Y-%m-%d').date(),
         required=True,
-        help='This field cannot be left blank'
+        help='This field cannot be left blank and must be in the format YYYY-MM-DD'
     )
     parser.add_argument(
         'completed',

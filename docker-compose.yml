@@ -34,8 +34,8 @@ services:
       # environment variables for the node react client
     environment:
       - NODE_ENV=development
-      - API_ENDPOINT_TASK=http://localhost:5000/task
-      - API_ENDPOINT_TASKS=http://localhost:5000/tasks
+      - API_ENDPOINT_TASK=http://192.168.99.100:5000/task
+      - API_ENDPOINT_TASKS=http://192.168.99.100:5000/tasks
 
   # frontend client tests
   tests:

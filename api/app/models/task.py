@@ -1,8 +1,8 @@
 from db import db
 
 
-# this class allows us to find an task in the db by
-# name and to insert or update an task in the db
+# this class provides the methods to find a task in the db by
+# id, to insert or update a task, and delete a task
 
 # the 'db.Model' below extends this class from SQLAlchemy
 class TaskModel(db.Model):
@@ -34,15 +34,15 @@ class TaskModel(db.Model):
 
     # this is a class level method that is called on the class
     # not an instance
-    @classmethod
-    def find_by_name(cls, name):
+    # @classmethod
+    # def find_by_name(cls, name):
 
         # this line is made possible by extending SQLAlchemy
         # and writes the db query for us in the background
         # and handles all the db connection, cursor, commit, and close tasks
         # this line is equivalent to: SELECT * FROM tasks WHERE name=name LIMIT 1
         # and returns an TaskModel instance
-        return cls.query.filter_by(name=name).first()
+        # return cls.query.filter_by(name=name).first()
 
 
     # this is a class level method that is called on the class

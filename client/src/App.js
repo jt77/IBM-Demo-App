@@ -65,7 +65,6 @@ class App extends Component {
 
     doTaskFormSubmit({name, description, duedate, completed, id}) {
         this.props.updateTasks({
-            // id: id ? id : Math.random() * 1000,
             id: id,
             data: {
                 name,
@@ -139,7 +138,7 @@ class App extends Component {
                 <ModalTransition>
                     {this.state.modalOpen && (
                         <ModalDialog
-                                className={"modalDialog"}
+                                className="modalDialog"
                                 width="75%"
                                 shouldCloseOnOverlayClick={true}
                                 onClose={() => {this.doModalClose()}}

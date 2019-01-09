@@ -39,8 +39,8 @@ export const store = createStore(reducers, initMockStateJSON, applyMiddleware(th
 /**
  *  We capture the api end point urls passed in from envinment variables
  */
-const apiUrl = process.env.API_ENDPOINT_TASK || 'http://localhost:5000/task'
-const apiUrlGetAll = process.env.API_ENDPOINT_TASKS || 'http://localhost:5000/tasks'
+const apiUrl = process.env.API_ENDPOINT_TASK || 'http://192.168.99.100:5000/task'
+const apiUrlGetAll = process.env.API_ENDPOINT_TASKS || 'http://192.168.99.100:5000/tasks'
 
 
 /**

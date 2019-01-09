@@ -20,16 +20,3 @@ ENTRYPOINT ["python"]
 
 # run server
 CMD ["/usr/src/app/app.py"]
-
-
-## IMPORTANT ##
-# We've added the '.dev' extension to this file to flag it
-# as our development configuration.  For docker to recognize
-# this file when we want to run it we need to run the command below
-# 'docker build -f Dockerfile.dev .'
-
-## To run the built container run the terminal command below and
-## use the container number or name it was given
-## the '3000:3000' part maps the container port to the computer port
-## this command essentially does what our docker-compose file does
-# docker run -p 3000:3000 -v /app/node_modules -v $(pwd):/app [YOU IMAGE NUMBER OR NAME]
