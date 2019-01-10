@@ -36,8 +36,8 @@ class App extends Component {
         this.props.getTasks()
     }
 
-    doTaskBarClick({name, description, duedate, completedStatus, id}) {
-        this.props.getTaskData(id)
+    doTaskBarClick = ({...taskData}) => {
+        this.props.getTaskData(taskData.id)
         this.setState({
             modalOpen:true,
             modalHeader: 'Edit Task',
@@ -45,15 +45,15 @@ class App extends Component {
         })
     }
 
-    doModalClose() {
+    doModalClose = () => {
         this.setState({modalOpen:false})
     }
 
-    doFilterSelect(filtersObj) {
+    doFilterSelect = (filtersObj) => {
         this.props.updateTaskFilters(filtersObj)
     }
 
-    doNewTaskButton() {
+    doNewTaskButton = () => {
         this.props.getTaskData()
 
         this.setState({
@@ -63,21 +63,21 @@ class App extends Component {
         })
     }
 
-    doTaskFormSubmit({name, description, duedate, completed, id}) {
+    doTaskFormSubmit = ({...formData}) => {
         this.props.updateTasks({
-            id: id,
+            id: formData.id,
             data: {
-                name,
-                description,
-                duedate,
-                completed
+                name:formData.name,
+                description:formData.description,
+                duedate:formData.duedate,
+                completed:formData.completed
             }
         })
 
         this.setState({modalOpen:false})
     }
 
-    doDeleteTask(taskId) {
+    doDeleteTask = (taskId) => {
         this.props.deleteTask(taskId)
 
         this.setState({modalOpen:false})
@@ -94,7 +94,7 @@ class App extends Component {
                             description={task.data.description}
                             duedate={task.data.duedate}
                             completedStatus={task.data.completed}
-                            handleClick={(taskData) => this.doTaskBarClick({...taskData})}
+                            handleClick={this.doTaskBarClick}
                             id={task.id}
                             key={task.id}/>
                     )
@@ -130,7 +130,7 @@ class App extends Component {
                 <h1 className="App-header">
                     TaskMan 5000
                 </h1>
-                <FilterBar isDisabled={this.props.tasks.length > 0} doFilterSelect={(filtersObj) => this.doFilterSelect(filtersObj)} doNewTask={() => this.doNewTaskButton()} />
+                <FilterBar isDisabled={this.props.tasks.length > 0} doFilterSelect={this.doFilterSelect} doNewTask={this.doNewTaskButton} />
                 <hr/>
                 <div className='tasks_container'>
                     { this.renderTaskBars() }
@@ -141,14 +141,14 @@ class App extends Component {
                                 className="modalDialog"
                                 width="75%"
                                 shouldCloseOnOverlayClick={true}
-                                onClose={() => {this.doModalClose()}}
+                                onClose={this.doModalClose}
                         >
                             { <TaskForm { ...this.props.modalTaskData.data }
                                         id={this.props.modalTaskData.id}
                                         header={this.state.modalHeader}
                                         creatingNewTask={this.state.modalCreatingNewTask}
-                                        onSubmit={(formData) => this.doTaskFormSubmit(formData)}
-                                        onDelete={(taskId) => this.doDeleteTask(taskId)}
+                                        onSubmit={this.doTaskFormSubmit}
+                                        onDelete={this.doDeleteTask}
                             /> }
                         </ModalDialog>
                     )}

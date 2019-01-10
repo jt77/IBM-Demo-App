@@ -39,6 +39,7 @@ class Task(Resource):
     )
 
     # /task/<id>
+    # retrieve a single task using its ID
     def get(self, id):
 
         task = TaskModel.find_by_id(id)
@@ -53,6 +54,7 @@ class Task(Resource):
 
 
     # /task
+    # add a single task to the database
     def post(self):
 
         data = Task.parser.parse_args()
@@ -63,8 +65,8 @@ class Task(Resource):
 
         try:
             # we take the TaskModel instance and call its insert method
-            # so that it inserts its name and price properties passed to it
-            # above and into the db
+            # so that it inserts the fields specified above from the request
+            # into the db
             task.save_to_db()
         except:
             return {'message': "An error occurred inserting the task."}, 500 # Internal server error
@@ -73,6 +75,7 @@ class Task(Resource):
 
 
     # /task/<id>
+    # delete a single task indentified by its ID
     def delete(self, id):
 
         task = TaskModel.find_by_id(id)
@@ -83,6 +86,7 @@ class Task(Resource):
 
 
     # /task/<id>
+    # update OR create a task indentified by its ID
     def put(self, id):
         data = Task.parser.parse_args()
 
@@ -103,7 +107,9 @@ class Task(Resource):
 
 
 class TaskList(Resource):
+
     # /tasks
+    # retrieve all tasks
     def get(self):
 
         # these two lines do the same thing...they iterate over the list

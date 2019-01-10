@@ -25,7 +25,7 @@ class FilterBar extends React.Component {
     /**
      * callback function called when clicking the 'new task' button
      */
-    doNewTaskClick() {
+    doNewTaskClick = () => {
         this.props.doNewTask()
     }
 
@@ -33,7 +33,7 @@ class FilterBar extends React.Component {
      * callback function called with object of selected filters when a selection is made
      * @param filtersObj
      */
-    doFilterSelect(filtersObj) {
+    doFilterSelect = filtersObj => {
         this.props.doFilterSelect(filtersObj)
     }
 
@@ -48,7 +48,7 @@ class FilterBar extends React.Component {
                         { label: 'Completed', value: 'completed' },
                         { label: 'Overdue', value: 'overdue' },
                     ]}
-                    onChange={(filters) => this.doFilterSelect(filters)}
+                    onChange={this.doFilterSelect}
                     className="multi-select"
                     classNamePrefix="react-select"
                     isMulti
@@ -58,7 +58,7 @@ class FilterBar extends React.Component {
                 />
                 <Button className='filter_btn_newtask'
                         iconAfter={<AddItemIcon label="" />}
-                        onClick={() => this.doNewTaskClick()}
+                        onClick={this.doNewTaskClick}
                 >
                     Create Task
                 </Button>

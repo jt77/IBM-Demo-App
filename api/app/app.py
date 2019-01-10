@@ -5,11 +5,13 @@ import os
 
 from resources.task import Task, TaskList
 
+import config
+
 
 app = Flask(__name__)
-app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///data.db'
-app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
-app.secret_key = os.environ.get('SECRET_KEY')
+app.config['SQLALCHEMY_DATABASE_URI'] = config.SQLALCHEMY_DATABASE_URI
+app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = config.SQLALCHEMY_TRACK_MODIFICATIONS
+app.secret_key = config.SECRET_KEY
 api = Api(app)
 
 CORS(app)
@@ -25,4 +27,4 @@ api.add_resource(TaskList, '/tasks')
 if __name__ == '__main__':
     from db import db
     db.init_app(app)
-    app.run(host=os.environ.get('LOCAL_HOST_IP'), port=5000)
+    app.run(host=config.LOCAL_HOST_IP, port=5000)

@@ -36,7 +36,7 @@ class TaskForm extends React.Component {
      * Update state with string from task name field
      * @param event
      */
-    doNameFieldChange(event) {
+    doNameFieldChange = event => {
         this.setState({
             taskName: event.currentTarget.value
         })
@@ -46,7 +46,7 @@ class TaskForm extends React.Component {
      * update state with string from task description field
      * @param event
      */
-    doDescriptionFieldChange(event) {
+    doDescriptionFieldChange = event => {
         this.setState({
             taskDescription: event.currentTarget.value
         })
@@ -56,14 +56,14 @@ class TaskForm extends React.Component {
      * update state with date selected from the date picker component
      * @param value
      */
-    doDateSelect(value) {
+    doDateSelect = value => {
         this.setState({taskDueDate:value})
     }
 
     /**
      * update state with true/false flag for the 'compeleted' toggle
      */
-    doCompleteToggle() {
+    doCompleteToggle = () => {
         this.setState({
             isCompleteToggleChecked: !this.state.isCompleteToggleChecked
         })
@@ -72,7 +72,7 @@ class TaskForm extends React.Component {
     /**
      * callback function to send the task data from the state
      */
-    doFormSubmit() {
+    doFormSubmit = () => {
         this.props.onSubmit({
             name: this.state.taskName,
             description: this.state.taskDescription,
@@ -85,7 +85,7 @@ class TaskForm extends React.Component {
     /**
      * callback function for when clicking the 'delete task' button
      */
-    doTaskDelete() {
+    doTaskDelete = () => {
         this.props.onDelete(this.state.id)
     }
 
@@ -100,7 +100,7 @@ class TaskForm extends React.Component {
                         required
                         name="task-name"
                         value={this.props.name}
-                        onChange={(event) => this.doNameFieldChange(event)}
+                        onChange={this.doNameFieldChange}
                     />
                     <FieldTextArea
                         shouldFitContainer={true}
@@ -110,7 +110,7 @@ class TaskForm extends React.Component {
                         enableResize='vertical'
                         name="task-description"
                         value={this.props.description}
-                        onChange={(event) => this.doDescriptionFieldChange(event)}
+                        onChange={this.doDescriptionFieldChange}
                     />
                 </div>
                 <Label htmlFor="react-select-datepicker--input" label="Please select a due date" />
@@ -118,17 +118,17 @@ class TaskForm extends React.Component {
                     id="datepicker"
                     defaultValue={this.state.taskDueDate}
                     innerProps={{style:{width:'50%'}}}
-                    onChange={(value) => this.doDateSelect(value)}
+                    onChange={this.doDateSelect}
                 />
                 <div className='taskform_buttons'>
                     <Button className=''
                             appearance='primary'
-                            onClick={() => this.doFormSubmit()}
+                            onClick={this.doFormSubmit}
                     >
                         {this.props.creatingNewTask ? 'Create' : 'Update'}
                     </Button>
                     {!this.props.creatingNewTask && <Button className=''
-                            onClick={() => this.doTaskDelete()}
+                            onClick={this.doTaskDelete}
                     >
                         Delete Task
                     </Button>}
@@ -138,7 +138,7 @@ class TaskForm extends React.Component {
                     <Toggle size="large"
                             label='Completed'
                             isDefaultChecked={this.state.isCompleteToggleChecked}
-                            onChange={() => this.doCompleteToggle()} />
+                            onChange={this.doCompleteToggle} />
                 </div>
             </form>
         )

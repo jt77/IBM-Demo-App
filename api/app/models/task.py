@@ -34,19 +34,6 @@ class TaskModel(db.Model):
 
     # this is a class level method that is called on the class
     # not an instance
-    # @classmethod
-    # def find_by_name(cls, name):
-
-        # this line is made possible by extending SQLAlchemy
-        # and writes the db query for us in the background
-        # and handles all the db connection, cursor, commit, and close tasks
-        # this line is equivalent to: SELECT * FROM tasks WHERE name=name LIMIT 1
-        # and returns an TaskModel instance
-        # return cls.query.filter_by(name=name).first()
-
-
-    # this is a class level method that is called on the class
-    # not an instance
     @classmethod
     def find_by_id(cls, id):
         return cls.query.get(id)

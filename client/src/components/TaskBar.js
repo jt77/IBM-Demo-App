@@ -72,13 +72,13 @@ class TaskBar extends React.Component {
     /**
      * callback function called when the taskbar is clicked
      */
-    doBarClickToEdit() {
+    doBarClickToEdit = () => {
         this.props.handleClick({...this.state})
     }
 
     render() {
         return(
-            <div className='taskBar' data-test="component-taskbar" onClick={() => this.doBarClickToEdit()}>
+            <div className='taskBar' data-test="component-taskbar" onClick={this.doBarClickToEdit}>
                 <h3>{this.state.name}</h3>
                 <div className='taskBar_status' data-test="component-taskbar-status">{this.renderDueStatusDisplay()}</div>
                 <EditFilledIcon label="edit task" />

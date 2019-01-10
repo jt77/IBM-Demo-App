@@ -37,11 +37,15 @@ export const initMockStateJSON = {
 export const store = createStore(reducers, initMockStateJSON, applyMiddleware(thunk))
 
 /**
- *  We capture the api end point urls passed in from envinment variables
+ *  We capture the api end point url passed in from envinment variables
  */
-const apiUrl = process.env.API_ENDPOINT_TASK || 'http://192.168.99.100:5000/task'
-const apiUrlGetAll = process.env.API_ENDPOINT_TASKS || 'http://192.168.99.100:5000/tasks'
+export const apiUrl = process.env.REACT_APP_API_URL
 
+/**
+ * setting baseURL for axios to use on all network calls
+ * endpoints are appended when network calls are made
+ */
+axios.defaults.baseURL = apiUrl
 
 /**
  * Action that makes an api call to get all the available tasks in the database
@@ -50,7 +54,7 @@ const apiUrlGetAll = process.env.API_ENDPOINT_TASKS || 'http://192.168.99.100:50
  */
 export const getTasks = () => async (dispatch, getState) => {
 
-    const response = await axios.get(apiUrlGetAll)
+    const response = await axios.get(`${apiUrl}/tasks`)
 
     dispatch({
         type: actionTypes.GET_TASKS,
@@ -68,7 +72,7 @@ export const getTasks = () => async (dispatch, getState) => {
  */
 export const updateTasks = (task) => async (dispatch, getState) => {
 
-    const response = task.id ? await axios.put(`${apiUrl}/${task.id}`, task.data) : await axios.post(apiUrl, task.data)
+    const response = task.id ? await axios.put(`${apiUrl}/task/${task.id}`, task.data) : await axios.post(`${apiUrl}/task`, task.data)
 
     dispatch( {
         type: actionTypes.UPDATE_TASKS,
@@ -85,7 +89,7 @@ export const updateTasks = (task) => async (dispatch, getState) => {
  */
 export const deleteTask = (taskId) => async (dispatch, getState) => {
 
-    const response = await axios.delete(`${apiUrl}/${taskId}`)
+    const response = await axios.delete(`${apiUrl}/task/${taskId}`)
 
     dispatch( {
         type: actionTypes.DELETE_TASK,

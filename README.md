@@ -53,5 +53,5 @@ Documentation for the API including description of each endpoint and example req
 - The Atlassian UI library makes use of the emotion css library. This library is generating some warnings and errors related to bugs in the library code.  Some measures have been taken to suppress these but others may appear.  So far none of these issues prevent the app from functioning properly.
 - Create-React-App uses ESLint which is generating some warnings.
 - There have been some module installation and code compilation errors seen only when running the Docker-Compose build process.  Most of these have been addressed but others may appear.
-
+- There is a lot of work that could be done for validation of data submitted through the api however considering this is a very simple use case only some validation was implemented.
 

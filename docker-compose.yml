@@ -31,11 +31,11 @@ services:
       - ./client:/app
     ports:
       - 3000:3000
-      # environment variables for the node react client
+    # environment variables for the node react client
+    # variable names used inside react must start with 'REACT_APP'
     environment:
       - NODE_ENV=development
-      - API_ENDPOINT_TASK=http://192.168.99.100:5000/task
-      - API_ENDPOINT_TASKS=http://192.168.99.100:5000/tasks
+      - REACT_APP_API_URL=http://localhost:5000
 
   # frontend client tests
   tests:
