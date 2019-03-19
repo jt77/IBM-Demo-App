@@ -1,6 +1,6 @@
-# IBM Demo App
+# React-Flask-Docker-App
 
-This is the codebase for the IBM job application demo app assignment.  The app is a task managment app with an api for storing task data in a database.  Both the client and api microservice run inside independent containers.
+The app is a task managment demo app with an api for storing task data in a database.  The app uses a microservice architecture with the client and api running inside independent containers.
 
 #### Client
 
